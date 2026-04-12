@@ -339,28 +339,78 @@
       margin-bottom: 48px;
     }
 
-    .programs-quote {
-      font-size: 18px;
-      font-weight: 300;
+    /* Phase strip — HTML, responsive */
+    .phase-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background-color: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 48px;
+    }
+
+    @media (max-width: 860px) {
+      .phase-strip { grid-template-columns: 1fr; }
+    }
+
+    .phase-box {
+      background-color: #161d2b;
+      padding: 20px 16px 16px;
+      border-left: 2.5px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phase-box--success {
+      border-left-color: var(--accent-hi);
+    }
+
+    .phase-header {
+      margin-bottom: 14px;
+    }
+
+    .phase-num, .phase-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+
+    .phase-box--success .phase-num,
+    .phase-box--success .phase-name {
+      color: var(--accent-hi);
+    }
+
+    .phase-quote-text {
+      font-size: 12px;
       font-style: italic;
+      font-weight: 300;
+      color: #8b96aa;
+      line-height: 1.55;
+      margin-bottom: 4px;
+    }
+
+    .phase-quote-attr {
+      font-size: 10px;
+      color: #4d5a70;
+      margin-bottom: 0;
+    }
+
+    .phase-sep {
+      border: none;
+      border-top: 1px solid #1c2840;
+      margin: 14px 0;
+    }
+
+    .phase-body {
+      margin-top: auto;
+    }
+
+    .phase-body p {
+      font-size: 12px;
       color: var(--t1);
       line-height: 1.6;
-      padding: 28px 32px;
-      border-left: 2px solid var(--accent);
-      background-color: var(--accent-glow);
-      max-width: 680px;
-      margin-bottom: 56px;
-    }
-
-    /* Phase strip — horizontal SVG wrapper */
-    .phase-strip-wrap {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .phase-strip-wrap svg {
-      width: 100%;
-      height: auto;
+      margin: 0;
     }
 
     /* =========================================
@@ -456,44 +506,46 @@
     }
 
     /* =========================================
-       COMPLIANCE CARDS
+       COMPLIANCE
     ========================================= */
-    .compliance-body {
+    .compliance-intro {
       max-width: 720px;
       margin-bottom: 52px;
     }
 
-    .compliance-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background-color: var(--line);
-      border: 1px solid var(--line);
+    .compliance-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
     }
 
-    @media (max-width: 620px) {
-      .compliance-cards { grid-template-columns: 1fr; }
+    .compliance-list li {
+      font-size: 14px;
+      color: var(--t2);
+      line-height: 1.75;
+      padding-left: 14px;
+      position: relative;
     }
 
-    .compliance-card {
-      background-color: var(--bg-card);
-      padding: 32px 28px;
+    .compliance-list li::before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
     }
 
-    .compliance-card-icon {
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    .compliance-card-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+    .compliance-close {
+      margin-top: 40px;
+      font-size: 17px;
+      font-weight: 300;
       color: var(--t1);
-      margin-bottom: 10px;
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      max-width: 600px;
+      line-height: 1.5;
     }
 
+    /* kept for reference — unused */
     .compliance-card-text {
       font-size: 14px;
       color: var(--t2);
@@ -662,110 +714,82 @@
       <p>My delivery model covers the full program lifecycle - from objective alignment and scope definition through structured execution, continuous evaluation, and controlled closeout. Every phase exists for a reason. None is decoration.</p>
     </div>
 
-    <!-- Phase Strip — horizontal SVG, viewBox 1000×240 -->
-    <div class="phase-strip-wrap" role="img" aria-label="Five-phase program delivery model: Start, Execute, Evaluate, Mitigate, Success">
-      <svg viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Phase Strip — HTML, mobile responsive -->
+    <div class="phase-strip" role="list" aria-label="Five-phase program delivery model">
 
-        <!-- Phase 01: START — x: 0..184 -->
-        <rect x="0" y="0" width="184" height="240" fill="#161d2b" rx="2"/>
-        <rect x="0" y="0" width="2.5" height="240" fill="#5b8db8"/>
-        <!-- title -->
-        <text x="16" y="28" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="14" font-weight="600" letter-spacing="2" fill="#5b8db8">01  START</text>
-        <!-- quote -->
-        <text x="16" y="52" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">&#8220;A goal without a plan</text>
-        <text x="16" y="67" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">is just a wish.&#8221;</text>
-        <!-- attribution -->
-        <text x="16" y="81" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="10" fill="#4d5a70">&#8212; Antoine de Saint-Exup&#233;ry</text>
-        <!-- separator -->
-        <line x1="16" y1="95" x2="176" y2="95" stroke="#1c2840" stroke-width="0.8"/>
-        <!-- body — bottom-aligned, 8 lines at 16px, last at y=224 → first at y=112 -->
-        <text x="16" y="112" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Define the objective.</text>
-        <text x="16" y="128" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Define done.</text>
-        <text x="16" y="144" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Define everything in</text>
-        <text x="16" y="160" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">between.</text>
-        <text x="16" y="176" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">All agreed before anything</text>
-        <text x="16" y="192" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">moves, or agree on</text>
-        <text x="16" y="208" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">what needs to be</text>
-        <text x="16" y="224" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">agreed later.</text>
+      <div class="phase-box" role="listitem">
+        <div class="phase-header">
+          <span class="phase-num">01&nbsp;&nbsp;</span><span class="phase-name">START</span>
+        </div>
+        <p class="phase-quote-text">&#8220;A goal without a plan is just a wish.&#8221;</p>
+        <p class="phase-quote-attr">- Antoine de Saint-Exup&#233;ry</p>
+        <hr class="phase-sep" aria-hidden="true">
+        <div class="phase-body">
+          <p>Define the objective.</p>
+          <p>Define done.</p>
+          <p>Define everything in between.</p>
+          <p>All agreed before anything moves, or agree on what needs to be agreed later.</p>
+        </div>
+      </div>
 
-        <!-- Connector 1&#8594;2 -->
-        <line x1="184" y1="120" x2="208" y2="120" stroke="#1c2840" stroke-width="1.5"/>
-        <polygon points="204,115 212,120 204,125" fill="#1c2840"/>
+      <div class="phase-box" role="listitem">
+        <div class="phase-header">
+          <span class="phase-num">02&nbsp;&nbsp;</span><span class="phase-name">EXECUTE</span>
+        </div>
+        <p class="phase-quote-text">&#8220;When you have to shoot, shoot. Don&#8217;t talk.&#8221;</p>
+        <p class="phase-quote-attr">- Tuco</p>
+        <hr class="phase-sep" aria-hidden="true">
+        <div class="phase-body">
+          <p>Decisions made.</p>
+          <p>Resources aligned.</p>
+          <p>Meetings don&#8217;t deliver programs.</p>
+        </div>
+      </div>
 
-        <!-- Phase 02: EXECUTE — x: 212..396 -->
-        <rect x="212" y="0" width="184" height="240" fill="#161d2b" rx="2"/>
-        <rect x="212" y="0" width="2.5" height="240" fill="#5b8db8"/>
-        <text x="228" y="28" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="14" font-weight="600" letter-spacing="2" fill="#5b8db8">02  EXECUTE</text>
-        <text x="228" y="52" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">&#8220;When you have to shoot,</text>
-        <text x="228" y="67" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">shoot. Don&#8217;t talk.&#8221;</text>
-        <text x="228" y="81" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="10" fill="#4d5a70">&#8212; Tuco</text>
-        <line x1="228" y1="95" x2="388" y2="95" stroke="#1c2840" stroke-width="0.8"/>
-        <!-- body — 4 lines, last at y=224 → first at y=176 -->
-        <text x="228" y="176" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Decisions made.</text>
-        <text x="228" y="192" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Resources aligned.</text>
-        <text x="228" y="208" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Meetings don&#8217;t</text>
-        <text x="228" y="224" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">deliver programs.</text>
+      <div class="phase-box" role="listitem">
+        <div class="phase-header">
+          <span class="phase-num">03&nbsp;&nbsp;</span><span class="phase-name">EVALUATE</span>
+        </div>
+        <p class="phase-quote-text">&#8220;Why does every time you plan something it goes wrong in reality? The problem is in people&#8217;s plan. The reality simply fixes the mistakes.&#8221;</p>
+        <p class="phase-quote-attr">- a driver in Kathmandu</p>
+        <hr class="phase-sep" aria-hidden="true">
+        <div class="phase-body">
+          <p>The plan is a hypothesis.</p>
+          <p>Reality is the test.</p>
+          <p>The team gets the detail.</p>
+          <p>Stakeholders get the signal.</p>
+        </div>
+      </div>
 
-        <!-- Connector 2&#8594;3 -->
-        <line x1="396" y1="120" x2="420" y2="120" stroke="#1c2840" stroke-width="1.5"/>
-        <polygon points="416,115 424,120 416,125" fill="#1c2840"/>
+      <div class="phase-box" role="listitem">
+        <div class="phase-header">
+          <span class="phase-num">04&nbsp;&nbsp;</span><span class="phase-name">MITIGATE</span>
+        </div>
+        <p class="phase-quote-text">&#8220;A plan is just the baseline for changes.&#8221;</p>
+        <p class="phase-quote-attr">- anonymous army colonel</p>
+        <hr class="phase-sep" aria-hidden="true">
+        <div class="phase-body">
+          <p>Map what&#8217;s stuck.</p>
+          <p>Intervene precisely.</p>
+          <p>Return to Evaluate.</p>
+        </div>
+      </div>
 
-        <!-- Phase 03: EVALUATE — x: 424..608 -->
-        <rect x="424" y="0" width="184" height="240" fill="#161d2b" rx="2"/>
-        <rect x="424" y="0" width="2.5" height="240" fill="#5b8db8"/>
-        <text x="440" y="28" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="14" font-weight="600" letter-spacing="2" fill="#5b8db8">03  EVALUATE</text>
-        <!-- long quote — 6 lines at 14px leading -->
-        <text x="440" y="52" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">&#8220;Why does every time you</text>
-        <text x="440" y="66" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">plan something it goes</text>
-        <text x="440" y="80" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">wrong in reality? The</text>
-        <text x="440" y="94" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">problem is in people&#8217;s</text>
-        <text x="440" y="108" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">plan. The reality simply</text>
-        <text x="440" y="122" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">fixes the mistakes.&#8221;</text>
-        <text x="440" y="136" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="10" fill="#4d5a70">&#8212; a driver in Kathmandu</text>
-        <line x1="440" y1="150" x2="600" y2="150" stroke="#1c2840" stroke-width="0.8"/>
-        <!-- body — 4 lines, last at y=224 → first at y=176 -->
-        <text x="440" y="176" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">The plan is a hypothesis.</text>
-        <text x="440" y="192" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Reality is the test.</text>
-        <text x="440" y="208" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">The team gets the detail.</text>
-        <text x="440" y="224" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Stakeholders get the signal.</text>
+      <div class="phase-box phase-box--success" role="listitem">
+        <div class="phase-header">
+          <span class="phase-num">05&nbsp;&nbsp;</span><span class="phase-name">SUCCESS</span>
+        </div>
+        <p class="phase-quote-text">&#8220;The reward of a thing well done is having done it.&#8221;</p>
+        <p class="phase-quote-attr">- Ralph Waldo Emerson</p>
+        <hr class="phase-sep" aria-hidden="true">
+        <div class="phase-body">
+          <p>Scope met.</p>
+          <p>Timeline held.</p>
+          <p>Owner confident.</p>
+          <p>Done is done.</p>
+        </div>
+      </div>
 
-        <!-- Connector 3&#8594;4 -->
-        <line x1="608" y1="120" x2="632" y2="120" stroke="#1c2840" stroke-width="1.5"/>
-        <polygon points="628,115 636,120 628,125" fill="#1c2840"/>
-
-        <!-- Phase 04: MITIGATE — x: 636..820 -->
-        <rect x="636" y="0" width="184" height="240" fill="#161d2b" rx="2"/>
-        <rect x="636" y="0" width="2.5" height="240" fill="#5b8db8"/>
-        <text x="652" y="28" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="14" font-weight="600" letter-spacing="2" fill="#5b8db8">04  MITIGATE</text>
-        <text x="652" y="52" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">&#8220;A plan is just the</text>
-        <text x="652" y="67" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">baseline for changes.&#8221;</text>
-        <text x="652" y="81" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="10" fill="#4d5a70">&#8212; anonymous army colonel</text>
-        <line x1="652" y1="95" x2="812" y2="95" stroke="#1c2840" stroke-width="0.8"/>
-        <!-- body — 3 lines, last at y=224 → first at y=192 -->
-        <text x="652" y="192" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Map what&#8217;s stuck.</text>
-        <text x="652" y="208" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Intervene precisely.</text>
-        <text x="652" y="224" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Return to Evaluate.</text>
-
-        <!-- Connector 4&#8594;5 -->
-        <line x1="820" y1="120" x2="844" y2="120" stroke="#1c2840" stroke-width="1.5"/>
-        <polygon points="840,115 848,120 840,125" fill="#1c2840"/>
-
-        <!-- Phase 05: SUCCESS — x: 848..1000 (w=152) -->
-        <rect x="848" y="0" width="152" height="240" fill="#161d2b" rx="2"/>
-        <rect x="848" y="0" width="2.5" height="240" fill="#7aadd4"/>
-        <text x="864" y="28" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="14" font-weight="600" letter-spacing="2" fill="#7aadd4">05  SUCCESS</text>
-        <text x="864" y="52" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">&#8220;The reward of a thing</text>
-        <text x="864" y="67" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">well done is having</text>
-        <text x="864" y="82" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-style="italic" font-weight="300" fill="#8b96aa">done it.&#8221;</text>
-        <text x="864" y="96" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="10" fill="#4d5a70">&#8212; Ralph Waldo Emerson</text>
-        <line x1="864" y1="110" x2="992" y2="110" stroke="#1c2840" stroke-width="0.8"/>
-        <!-- body — 4 lines, last at y=224 → first at y=176 -->
-        <text x="864" y="176" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Scope met.</text>
-        <text x="864" y="192" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Timeline held.</text>
-        <text x="864" y="208" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Owner confident.</text>
-        <text x="864" y="224" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="12" font-weight="400" fill="#e6ebf5">Done is done.</text>
-
-      </svg>
     </div>
 
   </div>
@@ -781,6 +805,7 @@
     <div class="gov-body section-body">
       <p>Governance is not built to satisfy a model. It is built so security holds in real life.</p>
       <p>Threat pressure keeps rising. Security only helps when rules are clear, procedures are usable, ownership is explicit, escalation is known, and risk is expressed in business terms. Otherwise it stays theoretical.</p>
+      <p>A good solid governance is the base for compliance as well. It all starts and ends with policies - the policies that exist and are managed, the policies that do not exist and are needed, and the policies that exist and are not managed.</p>
       <p>Policy is not literature. It is the rule-set - what must be done, what must not. Short, clear, owned. Procedures take that rule-set and make it usable in daily work. Not a reference document. A working tool.</p>
       <p>Frameworks are beacons. ISO 27001, NIS2, NIST CSF give direction - they also expose the holes. The real test is not whether a gap was identified. It is whether it <strong>moves</strong>: owned, accepted, mitigated, or closed. Findings without movement are just inventory.</p>
     </div>
@@ -871,62 +896,49 @@
   <div class="container">
 
     <p class="section-label">Compliance &amp; Audit</p>
-    <h2 class="section-title" id="compliance-heading">Compliance that <em>sticks</em></h2>
+    <h2 class="section-title" id="compliance-heading">The path to <em>compliance</em></h2>
 
-    <div class="compliance-body section-body">
-      <p>Audit readiness is not a sprint before the auditor arrives. It is the outcome of governance that works continuously.</p>
-      <p>Organizations that reach an audit date unprepared have usually been compliant on paper but not in practice. Controls existed but were not operated. Procedures were written but not followed. Evidence was assumed but not retained.</p>
-      <p>My approach is operational, not documentary. NIS2, ISO 27001, and sector-specific requirements set the target. Operational readiness is the method. Regulatory language becomes owned work packages. Gaps become remediation plans — with owners and timelines, not just entries in a spreadsheet.</p>
+    <div class="compliance-intro section-body">
+      <p>The value of compliance is not only in passing audit, but in building a stronger and more reliable operating baseline. Implementation can land anywhere between compliance theater and a control model so rigid that normal business starts working around it. What matters here is a practical, pragmatic approach.</p>
+      <p>Once the scope is defined, the work is to map the gaps between what is happening today and what it should look like - building a managed set of policies aligned with requirements, reflected in practical procedures, and demonstrable through evidence. When something truly operates, it leaves evidence behind it.</p>
+      <p>Audits do not usually fail because of the clause itself. They fail in the seams - the policy says one thing, the procedure says another, ownership is unclear, evidence is partial, and reporting starts only when the audit is near. That is where compliance becomes practical, defensible, and valuable.</p>
     </div>
 
-    <div class="compliance-cards" role="list" aria-label="Compliance capabilities">
+    <div class="gov-pillars" role="list" aria-label="Compliance approach: Map, Build, Operate">
 
-      <div class="compliance-card" role="listitem">
-        <svg class="compliance-card-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" role="img" aria-label="Regulatory translation icon">
-          <rect x="4" y="4" width="16" height="20" rx="1.5" stroke="#5b8db8" stroke-width="1.4"/>
-          <line x1="8" y1="10" x2="16" y2="10" stroke="#5b8db8" stroke-width="1.2"/>
-          <line x1="8" y1="15" x2="16" y2="15" stroke="#5b8db8" stroke-width="1.2"/>
-          <line x1="8" y1="20" x2="13" y2="20" stroke="#5b8db8" stroke-width="1.2"/>
-          <circle cx="24" cy="23" r="5.5" fill="#10151f" stroke="#5b8db8" stroke-width="1.4"/>
-          <path d="M22 23l1.5 1.5 3-3" stroke="#5b8db8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <p class="compliance-card-title">Regulatory Translation</p>
-        <p class="compliance-card-text">NIS2, ISO 27001, and sector-specific requirements turned into owned work packages. Regulatory language becomes implementation action.</p>
+      <div class="gov-pillar" role="listitem">
+        <p class="gov-pillar-label">Map</p>
+        <ul class="compliance-list">
+          <li>Requirements</li>
+          <li>Current state</li>
+          <li>Gaps</li>
+          <li>Owners</li>
+        </ul>
       </div>
 
-      <div class="compliance-card" role="listitem">
-        <svg class="compliance-card-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" role="img" aria-label="Gap to remediation icon">
-          <circle cx="16" cy="16" r="11" stroke="#5b8db8" stroke-width="1.4"/>
-          <path d="M16 7v9l6 3.5" stroke="#5b8db8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="16" cy="7" r="1.5" fill="#5b8db8"/>
-        </svg>
-        <p class="compliance-card-title">Gap-to-Remediation</p>
-        <p class="compliance-card-text">250+ control gaps converted to a tracked remediation portfolio. Each finding gets an owner, a decision, and a timeline — moving, not sitting.</p>
+      <div class="gov-pillar" role="listitem">
+        <p class="gov-pillar-label">Build</p>
+        <ul class="compliance-list">
+          <li>Procedures</li>
+          <li>Controls</li>
+          <li>Remediation actions</li>
+          <li>Evidence points</li>
+        </ul>
       </div>
 
-      <div class="compliance-card" role="listitem">
-        <svg class="compliance-card-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" role="img" aria-label="Evidence by design icon">
-          <path d="M8 4h12l6 6v18H8V4z" stroke="#5b8db8" stroke-width="1.4" stroke-linejoin="round"/>
-          <path d="M20 4v6h6" stroke="#5b8db8" stroke-width="1.4" stroke-linejoin="round"/>
-          <line x1="12" y1="16" x2="22" y2="16" stroke="#5b8db8" stroke-width="1.2"/>
-          <line x1="12" y1="21" x2="22" y2="21" stroke="#5b8db8" stroke-width="1.2"/>
-        </svg>
-        <p class="compliance-card-title">Evidence by Design</p>
-        <p class="compliance-card-text">Evidence collection built into process, not retrofitted before the audit window. Audit-ready governance is continuous governance.</p>
-      </div>
-
-      <div class="compliance-card" role="listitem">
-        <svg class="compliance-card-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" role="img" aria-label="Executive reporting icon">
-          <rect x="3" y="15" width="6" height="12" rx="1" stroke="#5b8db8" stroke-width="1.4"/>
-          <rect x="13" y="11" width="6" height="16" rx="1" stroke="#5b8db8" stroke-width="1.4"/>
-          <rect x="23" y="6" width="6" height="21" rx="1" stroke="#5b8db8" stroke-width="1.4"/>
-          <line x1="1" y1="28" x2="31" y2="28" stroke="#5b8db8" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <p class="compliance-card-title">Executive Reporting</p>
-        <p class="compliance-card-text">Compliance status in business terms. Progress, gaps, decisions pending — delivered to CEO, board, or audit committee without technical overhead.</p>
+      <div class="gov-pillar" role="listitem">
+        <p class="gov-pillar-label">Operate</p>
+        <ul class="compliance-list">
+          <li>Execution</li>
+          <li>Reporting</li>
+          <li>Review cycles</li>
+          <li>Exception handling</li>
+        </ul>
       </div>
 
     </div>
+
+    <p class="compliance-close">Compliance remains in execution. It is an operating state, not a project that ends at the audit.</p>
 
   </div>
 </section>

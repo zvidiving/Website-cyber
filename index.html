@@ -173,106 +173,113 @@
       pointer-events: none;
     }
 
-    .hero-content {
+    .hero-layout {
       position: relative;
-      max-width: 750px;
-    }
-
-    .hero-eyebrow {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 80px;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 32px;
+      width: 100%;
     }
 
-    .hero-eyebrow-line {
-      width: 28px;
-      height: 1px;
-      background-color: var(--accent);
+    @media (max-width: 900px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 0; }
+      .hero-graphic { display: none; }
     }
 
-    .hero-eyebrow-text {
+    .hero-role {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .hero-discipline {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--t3);
+      margin-bottom: 36px;
     }
 
     .hero-name {
-      font-size: clamp(52px, 8vw, 84px);
+      font-size: clamp(48px, 7vw, 76px);
       font-weight: 300;
       line-height: 1.0;
       letter-spacing: -0.025em;
       color: var(--t1);
-      margin-bottom: 18px;
-    }
-
-    .hero-title {
-      font-size: clamp(15px, 2.2vw, 20px);
-      font-weight: 300;
-      color: var(--t2);
-      letter-spacing: 0.01em;
-      margin-bottom: 44px;
+      margin-bottom: 36px;
     }
 
     .hero-rule {
       width: 40px;
       height: 2px;
       background-color: var(--accent);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .hero-tagline {
-      font-size: clamp(20px, 2.8vw, 26px);
+      font-size: clamp(20px, 2.4vw, 24px);
       font-weight: 300;
       color: var(--t1);
-      line-height: 1.45;
-      margin-bottom: 12px;
-      max-width: 580px;
+      line-height: 1.4;
+      margin-bottom: 20px;
     }
 
-    .hero-location {
-      font-size: 13px;
+    .hero-body {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--t2);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .hero-audiences {
+      font-size: 12px;
       color: var(--t3);
-      letter-spacing: 0.06em;
-      margin-bottom: 52px;
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+      margin-bottom: 4px;
     }
 
-    .hero-contact {
+    .hero-qualities {
+      font-size: 12px;
+      color: var(--t3);
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-sep {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin-bottom: 24px;
+    }
+
+    .hero-closing {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--accent-hi);
+    }
+
+    .hero-graphic {
       display: flex;
       align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
+      justify-content: center;
+      padding-left: 40px;
+      border-left: 1px solid var(--line);
+      align-self: stretch;
     }
 
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-hi);
-      padding-bottom: 3px;
-      border-bottom: 1px solid var(--accent-dim);
-      transition: color 0.2s, border-color 0.2s;
+    .hero-diagram {
+      width: 100%;
+      max-width: 260px;
+      opacity: 0.65;
     }
-
-    .hero-cta:hover {
-      color: var(--t1);
-      border-color: var(--accent);
-    }
-
-    .hero-cta-secondary {
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      color: var(--t3);
-      transition: color 0.2s;
-    }
-
-    .hero-cta-secondary:hover { color: var(--t2); }
 
     /* =========================================
        SECTION BASE
@@ -658,20 +665,55 @@
 <!-- HERO -->
 <section class="hero" aria-labelledby="hero-name">
   <div class="container">
-    <div class="hero-content">
+    <div class="hero-layout">
 
-      <div class="hero-eyebrow" aria-hidden="true">
-        <span class="hero-eyebrow-line"></span>
-        <span class="hero-eyebrow-text">Cyber Program Manager &nbsp;·&nbsp; GRC &amp; Compliance</span>
+      <div class="hero-content">
+
+        <p class="hero-role">Cybersecurity Program Manager</p>
+        <p class="hero-discipline">GRC &nbsp;·&nbsp; Delivery &nbsp;·&nbsp; Technical Alignment</p>
+
+        <h1 class="hero-name" id="hero-name">Zvi Magido</h1>
+
+        <div class="hero-rule" aria-hidden="true"></div>
+
+        <p class="hero-tagline">Making security hold in real life.</p>
+
+        <p class="hero-body">I turn security requirements into structured execution &#8212; practical enough to operate, clear enough to govern, and strong enough to hold beyond the slide deck.</p>
+
+        <p class="hero-audiences">Technical teams &nbsp;·&nbsp; Governance functions &nbsp;·&nbsp; Executive stakeholders</p>
+        <p class="hero-qualities">Clear ownership &nbsp;·&nbsp; Structured reporting &nbsp;·&nbsp; Measurable progress</p>
+
+        <hr class="hero-sep" aria-hidden="true">
+        <p class="hero-closing">Practical security. Structured delivery.</p>
+
       </div>
 
-      <h1 class="hero-name" id="hero-name">Zvi Magido</h1>
-      <p class="hero-title">Security Transformation &nbsp;&middot;&nbsp; Governance &amp; Risk &nbsp;&middot;&nbsp; Compliance Delivery</p>
+      <div class="hero-graphic" aria-hidden="true">
+        <svg class="hero-diagram" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-      <div class="hero-rule" aria-hidden="true"></div>
+          <!-- Leadership tier (top) -->
+          <line x1="10" y1="44" x2="250" y2="44" stroke="#253348" stroke-width="0.8"/>
+          <circle cx="130" cy="44" r="4" fill="#0d1119" stroke="#5b8db8" stroke-width="1" opacity="0.75"/>
 
-      <p class="hero-tagline">Making security hold in real life.</p>
+          <!-- Governance tier (middle) -->
+          <line x1="10" y1="110" x2="250" y2="110" stroke="#253348" stroke-width="0.8"/>
+          <circle cx="55" cy="110" r="3.5" fill="#0d1119" stroke="#5b8db8" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="130" cy="110" r="3.5" fill="#0d1119" stroke="#5b8db8" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="205" cy="110" r="3.5" fill="#0d1119" stroke="#5b8db8" stroke-width="0.8" opacity="0.6"/>
 
+          <!-- Technical tier (bottom) -->
+          <line x1="10" y1="176" x2="250" y2="176" stroke="#253348" stroke-width="0.8"/>
+          <circle cx="20" cy="176" r="3" fill="#0d1119" stroke="#5b8db8" stroke-width="0.7" opacity="0.45"/>
+          <circle cx="68" cy="176" r="3" fill="#0d1119" stroke="#5b8db8" stroke-width="0.7" opacity="0.45"/>
+          <circle cx="130" cy="176" r="3" fill="#0d1119" stroke="#5b8db8" stroke-width="0.7" opacity="0.45"/>
+          <circle cx="192" cy="176" r="3" fill="#0d1119" stroke="#5b8db8" stroke-width="0.7" opacity="0.45"/>
+          <circle cx="240" cy="176" r="3" fill="#0d1119" stroke="#5b8db8" stroke-width="0.7" opacity="0.45"/>
+
+          <!-- Central vertical connector -->
+          <line x1="130" y1="48" x2="130" y2="172" stroke="#1c2840" stroke-width="0.6" stroke-dasharray="2,5"/>
+
+        </svg>
+      </div>
 
     </div>
   </div>

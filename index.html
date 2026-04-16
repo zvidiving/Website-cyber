@@ -129,8 +129,10 @@
     }
 
     .nav-brand {
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       color: var(--t1);
       letter-spacing: 0.04em;
     }
@@ -154,7 +156,8 @@
     .nav-links a.nav-active { color: var(--t1); }
 
     @media (max-width: 500px) {
-      .nav-links { display: none; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 9px; letter-spacing: 0.1em; }
     }
 
     /* =========================================
@@ -433,6 +436,11 @@
       margin: 0;
     }
 
+    .risk-strip .phase-body p { color: var(--t2); }
+    .risk-strip .phase-body p.phase-hi { color: var(--t1); }
+
+    .phase-strip .phase-body { padding-top: 18px; }
+
     /* =========================================
        GOVERNANCE PILLARS
     ========================================= */
@@ -498,20 +506,16 @@
       margin-bottom: 14px;
     }
 
-    .risk-example {
+    p.risk-example {
       font-size: 14px;
       color: var(--t2);
       line-height: 1.65;
-      margin: 0;
-    }
-
-    .risk-example--first {
       margin-top: 0;
+      margin-bottom: 0;
     }
 
-    .risk-example--last {
-      margin-bottom: 1.65em;
-    }
+    p.risk-example--first { margin-top: -9px; }
+    p.risk-example--last  { margin-bottom: calc(20px + 1.6em); }
 
     /* =========================================
        COMPLIANCE
@@ -651,6 +655,44 @@
       .section { padding: 72px 0; }
       .hero-name { letter-spacing: -0.02em; }
     }
+
+    /* =========================================
+       BACK TO TOP
+    ========================================= */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 38px;
+      height: 38px;
+      background: var(--bg-card);
+      border: 1px solid var(--accent-dim);
+      color: var(--accent-hi);
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, color 0.2s, border-color 0.2s;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      color: var(--t1);
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 500px) {
+      .scroll-top { bottom: 20px; right: 20px; width: 34px; height: 34px; font-size: 13px; }
+    }
   </style>
 </head>
 <body>
@@ -691,7 +733,7 @@
 
         <p class="hero-tagline">Making security hold in real life.</p>
 
-        <p class="hero-body">I turn security requirements into structured execution &#8212; practical enough to operate, clear enough to govern, and strong enough to hold beyond the slide deck.</p>
+        <p class="hero-body">I turn security requirements into structured execution - practical enough to operate, clear enough to govern, and strong enough to hold beyond the slide deck.</p>
 
         <p class="hero-audiences">Technical teams &nbsp;·&nbsp; Governance functions &nbsp;·&nbsp; Executive stakeholders</p>
         <p class="hero-qualities">Clear ownership &nbsp;·&nbsp; Structured reporting &nbsp;·&nbsp; Measurable progress</p>
@@ -877,7 +919,7 @@
           <span class="phase-num">01&nbsp;&nbsp;</span><span class="phase-name">Discovery &amp; Assessment</span>
         </div>
         <div class="phase-body">
-          <p>Scenario-based.</p>
+          <p class="phase-hi">Scenario-based.</p>
           <p>Likelihood and impact expressed in business terms: operational disruption, financial damage, legal or regulatory exposure, customer impact, management attention, and cost of delay.</p>
         </div>
       </div>
@@ -887,7 +929,7 @@
           <span class="phase-num">02&nbsp;&nbsp;</span><span class="phase-name">Ownership</span>
         </div>
         <div class="phase-body">
-          <p>Business context.</p>
+          <p class="phase-hi">Business context.</p>
           <p>Once a risk is flagged and evaluated, it has an owner. The IT people are not the default owners, even if the risk was found in a technical system. The owner is the business owner carrying the consequence and accountable for the residual exposure.</p>
         </div>
       </div>
@@ -1024,12 +1066,19 @@
 </footer>
 
 
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">&#8593;</button>
+
 <script>
 (function () {
+  /* Nav scroll highlight */
   var links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
   var sections = links.map(function (l) {
     return document.querySelector(l.getAttribute('href'));
   }).filter(Boolean);
+
+  function clearActive() {
+    links.forEach(function (l) { l.classList.remove('nav-active'); });
+  }
 
   function setActive(id) {
     links.forEach(function (l) {
@@ -1046,6 +1095,17 @@
 
     sections.forEach(function (s) { observer.observe(s); });
   }
+
+  /* Back to top + clear nav highlight near top */
+  var btn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    btn.classList.toggle('visible', y > 400);
+    if (y < 120) clearActive();
+  }, { passive: true });
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 })();
 </script>
 
